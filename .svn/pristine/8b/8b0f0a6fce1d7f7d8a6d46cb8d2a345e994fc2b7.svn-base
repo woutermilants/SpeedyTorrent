@@ -1,0 +1,66 @@
+package com.example.SpeedyTorrent;
+
+import android.os.AsyncTask;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Wouter
+ */
+public class XmlShowsParser extends AsyncTask<String, String, List<String>> {
+
+    //List<String> followingShows = new ArrayList<String>();
+
+    @Override
+    protected List<String> doInBackground(String... params) {
+
+        InputStream inputXml = null;
+        List<String> followingShows = null;
+        try {
+            final String xmlAdres = "http://wouter.no-ip.biz:5680//config//Tv-Shows.xml";
+
+            HttpGet uri = null;
+            Document doc = null;
+            StatusLine status = null;
+            HttpResponse resp = null;
+            DocumentBuilder builder = null;
+            DefaultHttpClient client = null;
+            DocumentBuilderFactory factory = null;
+
+            uri = new HttpGet(xmlAdres);
+
+            client = new DefaultHttpClient();
+            resp = client.execute(uri);
+            status = resp.getStatusLine();
+            if (status.getStatusCode() == 200) {
+                factory = DocumentBuilderFactory.newInstance();
+                builder = factory.newDocumentBuilder();
+                doc = builder.parse(resp.getEntity().getContent());
+
+                NodeList shows = doc.getElementsByTagName("show");
+                followingShows = new ArrayList<String>();
+                for (int i = 0; i < shows.getLength(); i++) {
+                    NodeList show = shows.item(i).getChildNodes();
+
+                    String showName = show.item(0).getNodeValue();
+
+                    followingShows.add(showName);
+
+                }
+            }
+        } catch (Exception e) {
+
+        }
+        return followingShows;
+    }
+}

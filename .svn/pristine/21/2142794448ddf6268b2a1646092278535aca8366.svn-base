@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/addShow"
+          android:title="add tv-show" />
+    <item android:id="@+id/removeShow"
+          android:title="remove tv-show" />
+</menu>

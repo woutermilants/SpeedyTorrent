@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <Spinner
+            android:id="@+id/spnShows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+        <TableLayout
+                android:id="@+id/torrentTableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="699dp">
+
+            <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="66sp">
+                <Button
+                        android:id="@+id/btnNextActivity"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Click me to another screen" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>

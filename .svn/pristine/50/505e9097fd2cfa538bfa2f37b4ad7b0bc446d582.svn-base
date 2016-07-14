@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpeedyMagnet</string>
+    <string name="btnLoadTorrents">Load Torrents</string>
+    <string name="btnLoadShows">Edit Shows</string>
+    <string name="configureShows">Configure Shows</string>
+
+</resources>
